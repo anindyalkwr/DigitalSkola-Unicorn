@@ -3,10 +3,11 @@ import streamlit as st
 from eda_sect import eda_section
 from ml_sect import ml_section
 from about_sect import about_section
+from prep_sect import prep_section
 
 home_temp = """
             <div style="background-color:#0d0d0c;padding:1px;border-radius:25px">
-		        <h2 style="color:white;font-family:calibri;text-align:center;">FINAL PROJECT - DATA SCIENCE </h2>
+		        <h2 style="color:white;font-family:calibri;text-align:center;">Final Project - Data Science </h2>
             </div>
 """
 
@@ -66,11 +67,9 @@ def main():
     elif section == "About Project":
         about_section()
     elif section == "Data Preprocessing & Cleansing":
-        st.header("Data Preprocessing and Cleansing")
-        #run_ds_dataprep_clean_app()
+        prep_section()
     elif section == "Exploratory Data Analysis":
-        st.header("Exploratory Data Analysis (EDA)")
-        #run_ds_eda_app()
+        eda_section()
     elif section == "Machine Learning":
         ml_section()
 
