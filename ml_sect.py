@@ -80,7 +80,7 @@ def ml_section():
     family_history = st.selectbox('Family History of Mental Illness', ['No', 'Yes'])
     work_interfere = st.selectbox('Mental Illness Interferes with Work', ['Never', 'Rarely', 'Sometimes', 'Often'])
     remote_work = st.selectbox('Remote Work', ['No', 'Yes'])
-    ml_model = st.selectbox('Machine Learning Model', ['Random Forest', 'L Regression', 'Decision Tree'])
+    ml_model = st.selectbox('Machine Learning Model', ['Random Forest', 'Logistic Regression', 'Decision Tree'])
     
     # Convert input to a DataFrame
     input_data = pd.DataFrame({
