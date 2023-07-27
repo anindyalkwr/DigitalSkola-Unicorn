@@ -3,7 +3,6 @@ import pandas as pd
 from pandas.api.types import (
     is_categorical_dtype,
     is_numeric_dtype,
-    is_object_dtype,
 )
 
 prep_temp = """
@@ -13,41 +12,43 @@ prep_temp = """
 """
 
 temp_1 = """
-        <style>
-            h1 {
-                font-size: 18px;
-                color: white;
-            }
-            .font-big {
-                 font-size: large;
-            }
-            .font-small {
-                 font-size: middle;
-            }
-        </style>
-        <body>
-            <h1 class='font-big'>Dataset Preview</h1>
-        <body>
-        """
+    <style>
+        h1 {
+            font-size: 18px;
+            color: white;
+        }
+        .font-big {
+                font-size: large;
+        }
+        .font-small {
+                font-size: middle;
+        }
+    </style>
+    <body>
+        <h1 class='font-big'>Dataset Preview</h1>
+    <body>
+"""
+
 temp_2 = """
-        <style>
-            h1 {
-                font-size: 18px;
-                color: white;
-            }
-            .font-big {
-                 font-size: large;
-                 font-
-            }
-            .font-small {
-                 font-size: middle;
-            }
-        </style>
-        <body>
-            <h1 class='font-big'>Data Visualization</h1>
-        <body>
-        """
-@st.cache_data
+    <style>
+        h1 {
+            font-size: 18px;
+            color: white;
+        }
+        .font-big {
+                font-size: large;
+                font-
+        }
+        .font-small {
+                font-size: middle;
+        }
+    </style>
+    <body>
+        <h1 class='font-big'>Data Visualization</h1>
+    <body>
+"""
+
+@st.cache
 def load_data(data):
     df = pd.read_csv(data)
     df = df.iloc[:,1:]
@@ -234,5 +235,6 @@ def prep_section():
 
                  st.dataframe(df_clean_age.groupby(by='Age').agg(Qty=('Age','count')).sort_values(by='Qty',ascending=False))
                  st.text('%s%s' % (df_clean_age['Age'].nunique(),' data'))
+                 
 if __name__ == "__main__":
     prep_section()

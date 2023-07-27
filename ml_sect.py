@@ -19,7 +19,7 @@ def preprocess_data(data):
     return data
 
 # Load the pre-trained machine learning model
-@st.cache_data
+@st.cache
 def load_model(ml_model):
     if ml_model == 'Logistic Regression':
         return joblib.load('models/lr_classifier')
