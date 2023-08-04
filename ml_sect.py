@@ -22,11 +22,19 @@ def preprocess_data(data):
 @st.cache(allow_output_mutation=True)
 def load_model(ml_model):
     if ml_model == 'Logistic Regression':
-        return joblib.load('models/lr_classifier')
+        return joblib.load('models/LR_Classifier.pkl')
     elif ml_model == 'Decision Tree':
-        return joblib.load('models/dt_classifier')
+        return joblib.load('models/DT_Classifier.pkl')
+    elif ml_model == 'Stacking':
+        return joblib.load('models/Stacking_Classifier.pkl')
+    elif ml_model == 'K-Nearest Neighbors':
+        return joblib.load('models/KNN.pkl')
+    elif ml_model == 'Support Vector Machine':
+        return joblib.load('models/SVM.pkl')
+    elif ml_model == 'XGBoost':
+        return joblib.load('models/XGBoost_Classifier.pkl')
     else:
-        return joblib.load('models/rf_classifier')
+        return joblib.load('models/RF_Classifier.pkl')
 
 def ml_section():
     st.write(ml_temp, unsafe_allow_html=True)
@@ -80,7 +88,7 @@ def ml_section():
     family_history = st.selectbox('Family History of Mental Illness', ['No', 'Yes'])
     work_interfere = st.selectbox('Mental Illness Interferes with Work', ['Never', 'Rarely', 'Sometimes', 'Often'])
     remote_work = st.selectbox('Remote Work', ['No', 'Yes'])
-    ml_model = st.selectbox('Machine Learning Model', ['Random Forest', 'Logistic Regression', 'Decision Tree'])
+    ml_model = st.selectbox('Machine Learning Model', ['Stacking', 'Random Forest', 'Logistic Regression', 'Decision Tree', 'K-Nearest Neighbors', 'Support Vector Machine', 'XGBoost'])
     
     # Convert input to a DataFrame
     input_data = pd.DataFrame({
