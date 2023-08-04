@@ -34,7 +34,7 @@ def load_model(ml_model):
     elif ml_model == 'XGBoost':
         return joblib.load('models/XGBoost_Classifier.pkl')
     else:
-        return joblib.load('models/RF_Classifier.pkl')
+        return joblib.load('models/RF_classifier.pkl')
 
 def ml_section():
     st.write(ml_temp, unsafe_allow_html=True)
