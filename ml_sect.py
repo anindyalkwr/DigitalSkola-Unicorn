@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import joblib
+from sklearn.preprocessing import StandardScaler
 
 ml_temp = """
 <div style="background-color:#080366;padding:1px;border-radius:15px">
@@ -78,6 +79,9 @@ def ml_section():
 
         st.write("Based on the evaluation results, we have decided to use the Random Forest model for its more reliable and stable predictions, considering the probabilities and overall performance compared to the other models. Further tuning and optimization of the Random Forest model could potentially improve its performance and make it a robust predictor for mental health treatment needs.")
 
+        st.write("Revised:")
+        st.write("In addition to the above models, we also evaluated several other models, including SVM, K-Neighbors, Stacking, and XGBoost. Upon analyzing the results based on the accuracy metric alone, we found that SVM outperformed the other models. However, it's important to note that different models have their strengths and weaknesses, and using multiple models in combination may provide more realistic and reliable results. The XGBoost model, in particular, showed promising potential in capturing complex patterns in the data and could be further explored and fine-tuned to enhance its predictive capabilities. Therefore, considering the overall context and specific requirements of the mental health treatment prediction task, a combination of models or further optimization of the Random Forest and XGBoost models may be a fruitful approach to achieve more accurate and realistic results.")
+
     st.subheader('Mental Health Treatment Prediction')
     st.write('Enter the following information:')
     
@@ -118,8 +122,12 @@ def ml_section():
     st.subheader('Prediction Probability:')
     if prediction[0] == 1:
         st.write(f"There is a {prediction_proba[0]*100:.2f}% probability that mental health treatment is needed.")
+        st.write("If you or someone you know is struggling with mental health, it's essential to seek help. Reach out to mental health professionals, support groups, or helplines to get the support you need.")
+        st.image('images/mental_health_support.jpg', caption='Seeking professional help can make a difference.')
     else:
-        st.write(f"There is a {prediction_proba[0]*100:.2f}% probability that mental health treatment is not needed.")
+        st.write(f"There is a {100 - prediction_proba[0]*100:.2f}% probability that mental health treatment is not needed.")
+        st.write("Even if mental health treatment is not predicted to be needed, it's crucial to prioritize your mental well-being. Engaging in self-care practices, talking to friends or family, and seeking professional guidance can contribute to a healthier and happier life.")
+        st.image('images/self_care.jpg', caption='Taking care of your mental health is essential for overall well-being.')
 
 
 if __name__ == "__main__":
